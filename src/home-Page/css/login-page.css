@@ -1,0 +1,116 @@
+.login-wrapper {
+  background-color: #d1cdc7;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 900px;
+  padding: 0 30px;
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form-title {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sign-in-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.login-form-text {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.button-sigh-in {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 1.4rem;
+}
+
+.login-form-links-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .login-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 900px;
+    padding: 0 50px; /* Increased padding */
+  }
+
+  .login-form-wrapper {
+    width: 100%;
+    max-width: 600px; /* Increased max-width */
+  }
+
+  .login-form-title {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem; /* Increased margin for more spacing */
+    font-size: 2rem; /* Increased font size */
+  }
+
+  .sign-in-title {
+    text-align: center;
+    margin-bottom: 1rem; /* Increased margin */
+    font-size: 1.8rem; /* Increased font size */
+  }
+
+  .login-form-text {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem; /* Increased margin */
+    font-size: 1.2rem; /* Increased font size */
+  }
+
+  .button-sigh-in {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.1rem; /* Increased font size */
+    padding: 1.5rem; /* Increased padding */
+  }
+
+  .login-form-links-wrapper {
+    display: flex;
+    gap: 50px; /* Increased gap */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+}

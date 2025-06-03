@@ -1,0 +1,161 @@
+.custom-hover-button:hover {
+  color: #3b2a1f !important;
+}
+
+.ant-typography a:hover {
+  color: #e8e4d9;
+}
+
+.footer-wrapper {
+  padding: 30px;
+}
+
+.footer-items {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.left-footer-wrapper {
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-footer-text {
+  font-size: 28px;
+  text-align: center;
+  line-height: 31px;
+}
+
+.right-footer-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.right-footer-wrapper a {
+  color: #e8e4d9;
+}
+.right-footer-wrapper a:hover {
+  color: white;
+}
+.right-footer-list-header {
+  color: #e8e4d9;
+  padding-bottom: 20px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.right-footer-list {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.right-footer-list li {
+  padding: 6px 0;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .left-footer-wrapper,
+  .right-footer-wrapper {
+    width: 50%;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+  }
+
+  .left-footer-wrapper {
+    align-items: center;
+  }
+
+  .right-footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .left-footer-text {
+    text-align: center;
+  }
+  .right-footer-list li {
+    padding: 8px 0;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .footer-wrapper {
+    padding: 0;
+  }
+
+  .left-footer-wrapper,
+  .right-footer-wrapper {
+    padding: 50px;
+  }
+  .right-footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  .right-footer-list li {
+    padding: 8px 0;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .footer-wrapper {
+    padding: 0;
+  }
+  .right-footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .left-footer-wrapper,
+  .right-footer-wrapper {
+    padding: 70px;
+  }
+  .right-footer-list li {
+    padding: 8px 0;
+  }
+}

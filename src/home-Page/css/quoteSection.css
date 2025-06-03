@@ -1,0 +1,47 @@
+.quote-section-wrapper {
+  padding: 95px 50px;
+  text-align: center;
+  background-color: #d1cdc7;
+  border: 1px solid black;
+  height: 60vh;
+}
+.quote-section {
+  max-width: 685px;
+  margin: auto;
+}
+
+.quote-text {
+  font-size: 28px;
+  line-height: 31px;
+}
+.quote-subtext {
+  margin-top: 30px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.3px;
+}
+
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .quote-section {
+    max-width: 1200;
+    margin: auto;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .quote-section {
+    max-width: 1200px;
+    margin: auto;
+  }
+}

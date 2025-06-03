@@ -1,0 +1,458 @@
+[
+  {
+    "name": "Hydrating Aloe Cleanser",
+    "price": 14.99,
+    "description": "A soothing facial cleanser infused with aloe vera to cleanse and hydrate dry skin.",
+    "category": "skincare",
+    "stock": 50,
+    "image": "https://images.pexels.com/photos/4672476/pexels-photo-4672476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    "name": "Daily Vitamin C Serum",
+    "price": 22.5,
+    "description": "A brightening serum packed with vitamin C to improve skin radiance and reduce dark spots.",
+    "category": "skincare",
+    "stock": 40,
+    "image": "https://images.pexels.com/photos/3762882/pexels-photo-3762882.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Ultra Moisturizing Night Cream",
+    "price": 29.99,
+    "description": "A rich night cream that deeply moisturizes and repairs the skin overnight.",
+    "category": "skincare",
+    "stock": 35,
+    "image": "https://images.pexels.com/photos/3321416/pexels-photo-3321416.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "SPF 50 Broad Spectrum Sunscreen",
+    "price": 19.99,
+    "description": "A lightweight, non-greasy sunscreen that protects against UVA and UVB rays.",
+    "category": "skincare",
+    "stock": 45,
+    "image": "https://images.pexels.com/photos/3785147/pexels-photo-3785147.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Blemish Control Face Wash",
+    "price": 12.5,
+    "description": "A foaming face wash formulated with salicylic acid to treat acne and prevent breakouts.",
+    "category": "skincare",
+    "stock": 60,
+    "image": "https://images.pexels.com/photos/7256094/pexels-photo-7256094.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Hydration Boost Gel Moisturizer",
+    "price": 18.75,
+    "description": "A lightweight gel moisturizer that instantly refreshes and hydrates the skin.",
+    "category": "skincare",
+    "stock": 70,
+    "image": "https://images.pexels.com/photos/6724350/pexels-photo-6724350.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Soothing Green Tea Toner",
+    "price": 10.5,
+    "description": "A refreshing toner infused with green tea to calm and balance the skin.",
+    "category": "skincare",
+    "stock": 80,
+    "image": "https://images.pexels.com/photos/3987142/pexels-photo-3987142.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Anti-Aging Retinol Serum",
+    "price": 24.99,
+    "description": "A powerful retinol serum that reduces wrinkles and improves skin texture.",
+    "category": "skincare",
+    "stock": 50,
+    "image": "https://images.pexels.com/photos/2622187/pexels-photo-2622187.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Oil-Free Mattifying Moisturizer",
+    "price": 15.99,
+    "description": "A lightweight moisturizer that controls oil and shine for a matte finish.",
+    "category": "skincare",
+    "stock": 55,
+    "image": "https://images.pexels.com/photos/3762882/pexels-photo-3762882.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Brightening Eye Cream",
+    "price": 20.99,
+    "description": "An eye cream that brightens dark circles and reduces puffiness for a refreshed look.",
+    "category": "skincare",
+    "stock": 45,
+    "image": "https://images.pexels.com/photos/5797999/pexels-photo-5797999.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Gentle Exfoliating Scrub",
+    "price": 13.25,
+    "description": "A gentle facial scrub that exfoliates dead skin cells and reveals smoother skin.",
+    "category": "skincare",
+    "stock": 65,
+    "image": "https://images.pexels.com/photos/6933093/pexels-photo-6933093.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Purifying Charcoal Mask",
+    "price": 17.99,
+    "description": "A detoxifying face mask that draws out impurities and unclogs pores.",
+    "category": "skincare",
+    "stock": 40,
+    "image": "https://images.pexels.com/photos/7479676/pexels-photo-7479676.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Revitalizing Vitamin E Serum",
+    "price": 21.99,
+    "description": "A serum enriched with vitamin E to repair and rejuvenate tired, dull skin.",
+    "category": "skincare",
+    "stock": 50,
+    "image": "https://images.pexels.com/photos/4041391/pexels-photo-4041391.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Balancing Witch Hazel Toner",
+    "price": 9.99,
+    "description": "A balancing toner with witch hazel to tighten pores and refresh the skin.",
+    "category": "skincare",
+    "stock": 60,
+    "image": "https://images.pexels.com/photos/4612151/pexels-photo-4612151.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nourishing Face Oil",
+    "price": 25.5,
+    "description": "A luxurious facial oil that deeply nourishes and softens dry skin.",
+    "category": "skincare",
+    "stock": 30,
+    "image": "https://images.pexels.com/photos/6800943/pexels-photo-6800943.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Hyaluronic Acid Hydration Serum",
+    "price": 19.99,
+    "description": "A hydrating serum with hyaluronic acid that plumps and moisturizes the skin.",
+    "category": "skincare",
+    "stock": 55,
+    "image": "https://images.pexels.com/photos/8102138/pexels-photo-8102138.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Rejuvenating Peptide Cream",
+    "price": 27.5,
+    "description": "An anti-aging cream with peptides to firm and rejuvenate the skin.",
+    "category": "skincare",
+    "stock": 35,
+    "image": "https://images.pexels.com/photos/5425863/pexels-photo-5425863.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Soothing Rose Water Mist",
+    "price": 12.75,
+    "description": "A refreshing facial mist with rose water to hydrate and soothe the skin.",
+    "category": "skincare",
+    "stock": 80,
+    "image": "https://images.pexels.com/photos/6167869/pexels-photo-6167869.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Clarifying Clay Mask",
+    "price": 14.99,
+    "description": "A purifying clay mask that absorbs excess oil and clears congested skin.",
+    "category": "skincare",
+    "stock": 45,
+    "image": "https://images.pexels.com/photos/3762640/pexels-photo-3762640.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Smoothing Glycolic Acid Toner",
+    "price": 11.5,
+    "description": "A toner with glycolic acid to exfoliate and smooth uneven skin texture.",
+    "category": "skincare",
+    "stock": 75,
+    "image": "https://images.pexels.com/photos/4055794/pexels-photo-4055794.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Rejuvenating Aloe Mask",
+    "price": 16.5,
+    "description": "An aloe-infused mask that rejuvenates and restores skin hydration.",
+    "category": "skincare",
+    "stock": 40,
+    "image": "https://images.pexels.com/photos/15387118/pexels-photo-15387118/free-photo-of-cosmetic-flask-in-woman-hands.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Deep Hydration Overnight Mask",
+    "price": 23.75,
+    "description": "A hydrating overnight mask that restores moisture while you sleep.",
+    "category": "skincare",
+    "stock": 35,
+    "image": "https://images.pexels.com/photos/4612134/pexels-photo-4612134.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Brightening Vitamin C Moisturizer",
+    "price": 24.99,
+    "description": "A daily moisturizer with vitamin C that brightens and revitalizes the skin.",
+    "category": "skincare",
+    "stock": 50,
+    "image": "https://images.pexels.com/photos/3059398/pexels-photo-3059398.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "SPF 30 Moisturizing Sunscreen",
+    "price": 18.99,
+    "description": "A moisturizing sunscreen that provides SPF 30 protection and hydration.",
+    "category": "skincare",
+    "stock": 65,
+    "image": "https://images.pexels.com/photos/7691162/pexels-photo-7691162.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Mattifying Clay Cleanser",
+    "price": 14.99,
+    "description": "A clay-based cleanser that removes excess oil and impurities.",
+    "category": "skincare",
+    "stock": 60,
+    "image": "https://images.pexels.com/photos/6707337/pexels-photo-6707337.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Firming Collagen Serum",
+    "price": 22.5,
+    "description": "A collagen serum that firms the skin and reduces the appearance of wrinkles.",
+    "category": "skincare",
+    "stock": 40,
+    "image": "https://images.pexels.com/photos/4857813/pexels-photo-4857813.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Exfoliating Walnut Scrub",
+    "price": 13.25,
+    "description": "A scrub that exfoliates and smooths the skin using natural walnut particles.",
+    "category": "skincare",
+    "stock": 50,
+    "image": "https://images.pexels.com/photos/6167444/pexels-photo-6167444.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Calming Chamomile Moisturizer",
+    "price": 17.5,
+    "description": "A moisturizer with chamomile to soothe sensitive skin.",
+    "category": "skincare",
+    "stock": 30,
+    "image": "https://images.pexels.com/photos/6167442/pexels-photo-6167442.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Skin Restoring Night Oil",
+    "price": 26.99,
+    "description": "A restorative night oil that improves skin texture and tone.",
+    "category": "skincare",
+    "stock": 40,
+    "image": "https://images.pexels.com/photos/4889038/pexels-photo-4889038.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "SPF 40 Mineral Sunscreen",
+    "price": 21.99,
+    "description": "A mineral-based sunscreen that provides SPF 40 protection with a matte finish.",
+    "category": "skincare",
+    "stock": 50,
+    "image": "https://images.pexels.com/photos/4218619/pexels-photo-4218619.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Skin Calming Face Mist",
+    "price": 13.75,
+    "description": "A calming face mist with lavender to soothe irritated skin.",
+    "category": "skincare",
+    "stock": 80,
+    "image": "https://images.pexels.com/photos/6167867/pexels-photo-6167867.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Hydrating Coconut Gel Mask",
+    "price": 19.25,
+    "description": "A hydrating sheet mask infused with coconut water.",
+    "category": "skincare",
+    "stock": 60,
+    "image": "https://images.pexels.com/photos/4889549/pexels-photo-4889549.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Antioxidant Facial Serum",
+    "price": 28.99,
+    "description": "A serum packed with antioxidants to protect the skin from environmental damage.",
+    "category": "skincare",
+    "stock": 40,
+    "image": "https://images.pexels.com/photos/5632359/pexels-photo-5632359.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Overnight Acne Spot Treatment",
+    "price": 12.5,
+    "description": "An overnight spot treatment to reduce the size of acne breakouts.",
+    "category": "skincare",
+    "stock": 60,
+    "image": "https://images.pexels.com/photos/6724464/pexels-photo-6724464.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Cooling Cucumber Eye Gel",
+    "price": 15.99,
+    "description": "A cooling eye gel with cucumber extract to reduce puffiness.",
+    "category": "skincare",
+    "stock": 40,
+    "image": "https://images.pexels.com/photos/9475732/pexels-photo-9475732.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Tea Tree Oil Blemish Cream",
+    "price": 14.75,
+    "description": "A blemish cream with tea tree oil to treat acne and prevent future breakouts.",
+    "category": "skincare",
+    "stock": 55,
+    "image": "https://images.pexels.com/photos/8490173/pexels-photo-8490173.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Hydrating Lip Balm",
+    "price": 9.99,
+    "description": "A hydrating lip balm with shea butter and jojoba oil.",
+    "category": "skincare",
+    "stock": 100,
+    "image": "https://images.pexels.com/photos/5113055/pexels-photo-5113055.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Hydration Booster Serum",
+    "price": 19.99,
+    "description": "A concentrated hydration booster with hyaluronic acid for intense moisture.",
+    "category": "skincare",
+    "stock": 50,
+    "image": "https://images.pexels.com/photos/6925527/pexels-photo-6925527.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Peptide Repair Mask",
+    "price": 27.99,
+    "description": "A rejuvenating mask with peptides to repair and nourish damaged skin.",
+    "category": "skincare",
+    "stock": 30,
+    "image": "https://images.pexels.com/photos/7500295/pexels-photo-7500295.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nail Polish - Red Velvet",
+    "price": 7.99,
+    "description": "A vibrant red nail polish with a glossy finish.",
+    "category": "nail polish",
+    "stock": 100,
+    "image": "https://images.pexels.com/photos/3997386/pexels-photo-3997386.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nail Polish - Soft Pink",
+    "price": 7.99,
+    "description": "A soft pink nail polish perfect for everyday wear.",
+    "category": "nail polish",
+    "stock": 90,
+    "image": "https://images.pexels.com/photos/2281695/pexels-photo-2281695.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nail Polish - Midnight Blue",
+    "price": 8.5,
+    "description": "A dark blue nail polish with a long-lasting formula.",
+    "category": "nail polish",
+    "stock": 85,
+    "image": "https://images.pexels.com/photos/1839711/pexels-photo-1839711.png?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nail Polish - Glitter Gold",
+    "price": 9.25,
+    "description": "A gold glitter nail polish for a glamorous look.",
+    "category": "nail polish",
+    "stock": 70,
+    "image": "https://images.pexels.com/photos/8985979/pexels-photo-8985979.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Nude Beige",
+    "price": 8.99,
+    "description": "A neutral beige nail polish for a chic and polished look.",
+    "category": "nail polish",
+    "stock": 95,
+    "image": "https://images.pexels.com/photos/12653042/pexels-photo-12653042.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Classic Black",
+    "price": 8.25,
+    "description": "A classic black nail polish with a smooth, glossy finish.",
+    "category": "nail polish",
+    "stock": 80,
+    "image": "https://images.pexels.com/photos/11814032/pexels-photo-11814032.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Deep Burgundy",
+    "price": 9.5,
+    "description": "A rich burgundy nail polish with a creamy texture.",
+    "category": "nail polish",
+    "stock": 60,
+    "image": "https://images.pexels.com/photos/2268404/pexels-photo-2268404.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nail Polish - Pastel Mint",
+    "price": 7.99,
+    "description": "A pastel mint green nail polish perfect for spring.",
+    "category": "nail polish",
+    "stock": 75,
+    "image": "https://images.pexels.com/photos/16931993/pexels-photo-16931993/free-photo-of-hand-with-ring-and-tip-nails.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nail Polish - Coral Crush",
+    "price": 8.75,
+    "description": "A bright coral nail polish that adds a pop of color.",
+    "category": "nail polish",
+    "stock": 85,
+    "image": "https://images.pexels.com/photos/14814957/pexels-photo-14814957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    "name": "Nail Polish - Electric Purple",
+    "price": 9.99,
+    "description": "A bold electric purple nail polish for a fun and vibrant look.",
+    "category": "nail polish",
+    "stock": 65,
+    "image": "https://images.pexels.com/photos/16363470/pexels-photo-16363470/free-photo-of-hands-with-professional-manicure-done.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    "name": "Nail Polish - Shimmer Silver",
+    "price": 9.25,
+    "description": "A silver shimmer nail polish with a metallic finish.",
+    "category": "nail polish",
+    "stock": 70,
+    "image": "https://images.pexels.com/photos/12653042/pexels-photo-12653042.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Matte Gray",
+    "price": 7.75,
+    "description": "A matte gray nail polish for a modern and edgy look.",
+    "category": "nail polish",
+    "stock": 90,
+    "image": "https://images.pexels.com/photos/3557600/pexels-photo-3557600.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Bright Yellow",
+    "price": 8.99,
+    "description": "A vibrant yellow nail polish for a bold statement.",
+    "category": "nail polish",
+    "stock": 80,
+    "image": "https://images.pexels.com/photos/5871916/pexels-photo-5871916.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Sky Blue",
+    "price": 7.5,
+    "description": "A soft sky blue nail polish for a light, airy look.",
+    "category": "nail polish",
+    "stock": 100,
+    "image": "https://images.pexels.com/photos/10420563/pexels-photo-10420563.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Rose Gold",
+    "price": 9.75,
+    "description": "A rose gold nail polish with a metallic shimmer.",
+    "category": "nail polish",
+    "stock": 70,
+    "image": "https://images.pexels.com/photos/14553319/pexels-photo-14553319.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Neon Green",
+    "price": 8.5,
+    "description": "A neon green nail polish for a fun and daring look.",
+    "category": "nail polish",
+    "stock": 90,
+    "image": "https://images.pexels.com/photos/704815/pexels-photo-704815.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "name": "Nail Polish - Bright Orange",
+    "price": 9.25,
+    "description": "A bright orange nail polish for a pop of color.",
+    "category": "nail polish",
+    "stock": 60,
+    "image": "https://images.pexels.com/photos/13277179/pexels-photo-13277179.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  },
+  {
+    "name": "Nail Polish - Sparkling Pink",
+    "price": 8.99,
+    "description": "A sparkling pink nail polish with glitter for a dazzling look.",
+    "category": "nail polish",
+    "stock": 75,
+    "image": "https://images.pexels.com/photos/2281695/pexels-photo-2281695.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+  }
+]

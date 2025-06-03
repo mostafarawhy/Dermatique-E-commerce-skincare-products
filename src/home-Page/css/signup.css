@@ -1,0 +1,116 @@
+.signup-wrapper {
+  background-color: #d1cdc7;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 30px;
+}
+
+.signup-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.signup-form-title {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.signup-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.signup-form-text {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.button-signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 1.4rem;
+}
+
+.signup-form-links-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .signup-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 50px; /* Increased padding */
+  }
+
+  .signup-form-wrapper {
+    width: 100%;
+    max-width: 600px; /* Increased max-width */
+  }
+
+  .signup-form-title {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem; /* Increased margin for more spacing */
+    font-size: 2rem; /* Increased font size */
+  }
+
+  .signup-title {
+    text-align: center;
+    margin-bottom: 1rem; /* Increased margin */
+    font-size: 1.8rem; /* Increased font size */
+  }
+
+  .signup-form-text {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem; /* Increased margin */
+    font-size: 1.2rem; /* Increased font size */
+  }
+
+  .button-signup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.1rem; /* Increased font size */
+    padding: 1.5rem; /* Increased padding */
+  }
+
+  .signup-form-links-wrapper {
+    display: flex;
+    gap: 50px; /* Increased gap */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+}

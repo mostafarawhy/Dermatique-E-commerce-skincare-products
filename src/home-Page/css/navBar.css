@@ -1,0 +1,111 @@
+/* Base styles for mobile-first approach */
+/* body { */
+/* Common mobile styles */
+/* } */
+
+/* Extra small devices (phones, 0px to 575px) */
+
+.left-navbar {
+  width: 50%;
+  padding-left: 20px;
+  height: 100%;
+  align-items: center;
+  border: 1px solid black;
+  flex-shrink: 0;
+}
+
+.navbar-container {
+  display: none;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1;
+  height: 100%;
+}
+
+.navbar-items-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  border: 1px solid black;
+}
+
+.navbar-item {
+  width: 20%;
+  height: 100%;
+  display: block;
+  border-right: 1px solid black;
+}
+
+.navbar-item-link {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: black;
+}
+.navbar-item-controls {
+  display: flex;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 100%;
+  color: black;
+}
+
+.user-icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.online-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.bag-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: black;
+  border-radius: 30%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid black;
+  align-items: center;
+  font-size: 12px;
+}
+
+.right-navbar {
+  height: 100%;
+  display: block;
+  width: 50%;
+  align-items: center;
+}
+
+.logo-anchor {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+@media (min-width: 1200px) {
+  .navbar-container {
+    display: flex;
+  }
+}

@@ -1,0 +1,108 @@
+.full-screen-drawer {
+}
+
+.drawer-content-wrapper {
+  margin-top: 80px;
+}
+
+.bag-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+
+  gap: 20px;
+}
+
+.item-header-wrapper {
+}
+.img-wrapper {
+}
+
+.item-img {
+  width: 60%;
+}
+
+.item-details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.item-title {
+  font-weight: bold;
+}
+.item-quantity {
+  font-weight: bold;
+}
+.remove-button {
+  border: none;
+}
+.checkout-button {
+  height: 2rem;
+}
+.adds-buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .item-img {
+    width: 200px;
+  }
+  .checkout-button {
+    height: 3rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .item-img {
+    width: 200px;
+  }
+  .item-title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  .item-details {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .item-img {
+    width: 200px;
+  }
+  .item-title {
+    letter-spacing: 2px;
+  }
+}

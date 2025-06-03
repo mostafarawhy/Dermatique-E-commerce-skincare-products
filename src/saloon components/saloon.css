@@ -1,0 +1,68 @@
+.saloon-wrapper {
+  background-color: #d1cdc7;
+}
+
+.saloon-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.saloon-title-text {
+  text-decoration: underline;
+  font-size: 20px;
+  line-height: 55px;
+  font-weight: 400;
+}
+
+.saloon-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+}
+.saloon-img-wrapper {
+  width: 100%;
+}
+
+.saloon-img {
+  width: 100%;
+}
+
+.book-button {
+  align-self: center;
+  width: 80%;
+  margin-top: 20px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (min-width: 992px) {
+  .saloon-title-text {
+    text-decoration: underline;
+    font-size: 35px;
+    line-height: 55px;
+    font-weight: 400;
+  }
+  .book-button {
+    align-self: center;
+    width: 60%;
+    margin-top: 20px;
+    text-align: center;
+    white-space: nowrap;
+    height: 3rem;
+    font-size: 1rem;
+  }
+  .saloon-desc {
+    text-align: center;
+    font-size: 20px;
+  }
+}
