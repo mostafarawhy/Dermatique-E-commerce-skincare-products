@@ -9,4 +9,7 @@ export default defineConfig({
     cors: true,
   },
   plugins: [react()],
+  test: {
+    environment: "jsdom",
+  },
 });

@@ -10,6 +10,7 @@ dotenv.config();
 export const signup = async (req, res) => {
   try {
     const { username, email, password, googleId } = req.body;
+    console.log(username, email, password);
 
     // check for existing email
     const existingEmail = await User.findOne({ email });
@@ -89,7 +90,7 @@ export const login = async (req, res) => {
     const token = jwt.sign(
       { userId: user._id, isGoogleUser: false },
       process.env.JWT_SECRET,
-      { expiresIn: "1w" }
+      { expiresIn: "1w" },
     );
 
     res.cookie("token", token, {

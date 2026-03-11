@@ -21,7 +21,6 @@ const EmailVerificationPage = () => {
 
     const verifyEmail = async () => {
       try {
-
         const response = await api.get(`/auth/verify-email/${token}`, {
           signal: abortController.signal,
         });
@@ -32,7 +31,6 @@ const EmailVerificationPage = () => {
         setVerificationStatus("success");
         antMessage.success(data.message);
       } catch (error) {
-
         if (error.name === "CanceledError" || error.name === "AbortError") {
           return;
         }
@@ -59,7 +57,6 @@ const EmailVerificationPage = () => {
     if (token) {
       verifyEmail();
     }
-
 
     return () => {
       abortController.abort();
