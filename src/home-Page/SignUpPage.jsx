@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Form,
   Input,
@@ -24,75 +24,25 @@ const { Item } = Form;
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [verificationSent, setVerificationSent] = useState(false);
 
   const onFinish = async (values) => {
     try {
       setIsSubmitting(true);
-      const response = await api.post("/auth/signup", {
+
+      await api.post("/auth/signup", {
         username: values.fullName,
         email: values.email,
         password: values.password,
       });
 
-
-      localStorage.setItem("pendingVerificationEmail", values.email);
-
-      message.success("Please check your email to verify your account");
-      setVerificationSent(true);
+      message.success("Account created successfully. You can now log in.");
+      navigate("/login");
     } catch (error) {
       message.error(error.response?.data?.message || "Error creating account");
     } finally {
       setIsSubmitting(false);
     }
   };
-
-
-  if (verificationSent) {
-    return (
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#B4ADA7",
-            colorPrimaryHover: "#3B3535",
-            borderRadius: 8,
-          },
-        }}
-      >
-        <Flex className="signup-wrapper">
-          <Flex vertical className="signup-form-wrapper">
-            <Title level={2} className="signup-form-title">
-              Verify Your Email
-            </Title>
-            <Text
-              className="signup-form-text"
-              style={{ textAlign: "center", marginBottom: "2rem" }}
-            >
-              We've sent a verification link to your email address. Please check
-              your inbox and click the link to verify your account.
-            </Text>
-            <Text type="secondary" style={{ textAlign: "center" }}>
-              Didn't receive the email? Check your spam folder or
-              <Button
-                type="link"
-                onClick={() => setVerificationSent(false)}
-                style={{ padding: "0 4px" }}
-              >
-                try signing up again
-              </Button>
-            </Text>
-            <Button
-              type="primary"
-              onClick={() => navigate("/login")}
-              style={{ marginTop: "2rem" }}
-            >
-              Go to Login
-            </Button>
-          </Flex>
-        </Flex>
-      </ConfigProvider>
-    );
-  }
 
   return (
     <ConfigProvider
@@ -126,6 +76,7 @@ const SignUpPage = () => {
           >
             Please fill in the information below to create your account.
           </Text>
+
           <Form
             name="signup"
             onFinish={onFinish}
@@ -147,6 +98,7 @@ const SignUpPage = () => {
                 size="large"
               />
             </Item>
+
             <Item
               name="email"
               rules={[
@@ -166,6 +118,7 @@ const SignUpPage = () => {
                 size="large"
               />
             </Item>
+
             <Item
               name="password"
               rules={[
@@ -181,6 +134,7 @@ const SignUpPage = () => {
                 size="large"
               />
             </Item>
+
             <Item
               name="confirmPassword"
               dependencies={["password"]}
@@ -195,7 +149,7 @@ const SignUpPage = () => {
                       return Promise.resolve();
                     }
                     return Promise.reject(
-                      new Error("The two passwords do not match!")
+                      new Error("The two passwords do not match!"),
                     );
                   },
                 }),
@@ -207,6 +161,7 @@ const SignUpPage = () => {
                 size="large"
               />
             </Item>
+
             <Item>
               <Button
                 className="button-signup"

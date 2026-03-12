@@ -29,17 +29,34 @@ mongoose.connection.on("disconnected", () => {
   console.log("MongoDB disconnected");
 });
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
+app.use(cookieParser());
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin(origin, callback) {
+      // allow non-browser requests like Postman / server-to-server
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
     credentials: true,
   }),
 );
-app.use(cookieParser());
-app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to your API" });
@@ -53,13 +70,14 @@ app.use("/api/paypal", PaymentRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/search", searchRoutes);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   const statusCode = err.statusCode || 500;
+
   res.status(statusCode).json({
     message: err.message || "Something went wrong!",
     stack: process.env.NODE_ENV === "development" ? err.stack : "🥞",
@@ -67,12 +85,14 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 4000;
-const server = app.listen(PORT, () =>
-  console.log(`Server running on port ${PORT}`),
-);
+
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 const gracefulShutdown = async () => {
   console.log("Shutdown signal received: closing HTTP server");
+
   try {
     await mongoose.connection.close();
     console.log("MongoDB connection closed");

@@ -2,17 +2,13 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/User.js";
-import crypto from "crypto";
-import { sendVerificationEmail } from "./services/emailService.js";
 
 dotenv.config();
 
 export const signup = async (req, res) => {
   try {
-    const { username, email, password, googleId } = req.body;
-    console.log(username, email, password);
+    const { username, email, password } = req.body;
 
-    // check for existing email
     const existingEmail = await User.findOne({ email });
     if (existingEmail) {
       return res.status(400).json({
@@ -22,32 +18,19 @@ export const signup = async (req, res) => {
       });
     }
 
-    // generate verification token
-    const verificationToken = crypto.randomBytes(32).toString("hex");
-    const verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
-
-    // create new user
     const newUser = new User({
       username,
       email,
       password,
-      verificationToken,
-      verificationTokenExpiry,
-      isVerified: false,
+      isVerified: true,
+      verificationToken: undefined,
+      verificationTokenExpiry: undefined,
     });
 
-    // save the user
     await newUser.save();
 
-    try {
-      await sendVerificationEmail(email, verificationToken);
-      console.log("Verification email sent successfully");
-    } catch (emailError) {
-      console.error("Error sending verification email:", emailError);
-    }
-
     res.status(201).json({
-      message: "Please check your email to verify your account",
+      message: "Account created successfully",
       success: true,
     });
   } catch (error) {
@@ -67,13 +50,6 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "Invalid credentials" });
-    }
-
-    // add verification check
-    if (!user.isVerified && !user.googleId) {
-      return res.status(403).json({
-        message: "Please verify your email before logging in",
-      });
     }
 
     if (user.googleId && !user.password) {
@@ -123,125 +99,6 @@ export const login = async (req, res) => {
   }
 };
 
-export const verifyEmail = async (req, res) => {
-  try {
-    const { token } = req.params;
-    console.log("Received verification request for token:", token);
-
-    const now = new Date();
-
-    const user = await User.findOne({
-      $or: [
-        { verificationToken: token },
-
-        {
-          email: req.query.email,
-          isVerified: true,
-          updatedAt: { $gt: new Date(Date.now() - 5 * 60 * 1000) },
-        },
-      ],
-    });
-
-    if (!user) {
-      console.log("No user found with this token");
-      return res.status(400).json({
-        success: false,
-        status: "failed",
-        reason: "invalid",
-        message: "Invalid verification token",
-      });
-    }
-
-    if (user.isVerified) {
-      console.log("User already verified:", user.email);
-      return res.status(200).json({
-        success: true,
-        status: "success",
-        message: "Email already verified",
-        email: user.email,
-        alreadyVerified: true,
-      });
-    }
-
-    user.isVerified = true;
-    user.verificationToken = undefined;
-    user.verificationTokenExpiry = undefined;
-
-    console.log("Saving user verification status...");
-    await user.save();
-    console.log("User verified successfully:", user.email);
-
-    return res.status(200).json({
-      success: true,
-      status: "success",
-      message: "Email verified successfully",
-      email: user.email,
-    });
-  } catch (error) {
-    console.error("Verification error details:", error);
-    return res.status(500).json({
-      success: false,
-      status: "failed",
-      reason: "error",
-      message: "Server error during verification",
-    });
-  }
-};
-
-export const resendVerificationEmail = async (req, res) => {
-  try {
-    const { email } = req.body;
-
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found",
-      });
-    }
-
-    if (user.isVerified) {
-      return res.status(200).json({
-        success: true,
-        message: "Email is already verified",
-        alreadyVerified: true,
-      });
-    }
-
-    const verificationToken = crypto.randomBytes(32).toString("hex");
-    const verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
-
-    user.verificationToken = verificationToken;
-    user.verificationTokenExpiry = verificationTokenExpiry;
-    await user.save();
-
-    try {
-      await sendVerificationEmail(email, verificationToken);
-      console.log("Verification email resent successfully");
-
-      return res.status(200).json({
-        success: true,
-        message: "Verification email resent successfully",
-      });
-    } catch (emailError) {
-      console.error("Error sending verification email:", emailError);
-      return res.status(500).json({
-        success: false,
-        message: "Error sending verification email",
-        error: emailError.message,
-      });
-    }
-  } catch (error) {
-    console.error("Resend verification error:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Error resending verification email",
-      error: error.message,
-    });
-  }
-};
-
 export const googleLogin = async (req, res) => {
   try {
     const { sub, email, name, picture } = req.body;
@@ -256,11 +113,13 @@ export const googleLogin = async (req, res) => {
         email,
         username: name,
         profilePicture: picture,
+        isVerified: true,
       });
       await user.save();
     } else if (!user.googleId) {
       user.googleId = sub;
       user.profilePicture = picture;
+      user.isVerified = true;
       await user.save();
     }
 

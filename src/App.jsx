@@ -27,7 +27,6 @@ import { CartProvider } from "./providers/CartProvider";
 import { DrawerProvider } from "./providers/DrawerProvider";
 import CheckOutPage from "./home-Page/CheckoutPage/CheckOutPage";
 import SearchProvider from "./providers/SearchProvider";
-import EmailVerificationPage from "./home-Page/EmailVerificationPage";
 
 const { Header, Footer, Content } = Layout;
 
@@ -83,7 +82,6 @@ function App() {
                       <Content>
                         <Routes>
                           <Route path="/" element={<HomePageMain />} />
-
                           <Route path="/shop" element={<ShopMainPage />} />
                           <Route path="/stories" element={<StoriesMain />} />
                           <Route path="/saloon" element={<SaloonMain />} />
@@ -91,20 +89,9 @@ function App() {
                           <Route path="/signup" element={<SignUpPage />} />
                           <Route path="/dashboard" element={<DashBoard />} />
                           <Route path="/checkout" element={<CheckOutPage />} />
-                          <Route
-                            path="/verify-email/:token"
-                            element={<EmailVerificationPage />}
-                          />
-                          <Route
-                            path="/verify-email/success"
-                            element={<EmailVerificationPage />}
-                          />
-                          <Route
-                            path="/verify-email/failed"
-                            element={<EmailVerificationPage />}
-                          />
                         </Routes>
                       </Content>
+
                       <Footer
                         style={{
                           width: "100%",
