@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const DATABASE_URL = "http://localhost:4000/api";
+const DATABASE_URL = import.meta.env.VITE_API_URL;
 
 async function client(endpoint, customeConfig = {}) {
   const config = {
