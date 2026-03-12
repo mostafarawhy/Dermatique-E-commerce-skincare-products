@@ -3,7 +3,7 @@ import useDrawers from "../hooks/useDrawers";
 
 export const DrawerContext = createContext();
 
-export function Drawerprovider({ children }) {
+export function DrawerProvider({ children }) {
   const {
     drawerState,
     activeMenu,

@@ -21,10 +21,10 @@ import { useEffect } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import SignUpPage from "./home-Page/SignUpPage";
 import DashBoard from "./dashboard/DashBoard";
-import { AuthProvider } from "./providers/authProvider";
+import { AuthProvider } from "./providers/AuthProvider";
 import { useAuthContext } from "./hooks/useAuthContext";
-import { CartProvider } from "./providers/cartProvider";
-import { Drawerprovider } from "./providers/DrawerProvider";
+import { CartProvider } from "./providers/CartProvider";
+import { DrawerProvider } from "./providers/DrawerProvider";
 import CheckOutPage from "./home-Page/CheckoutPage/CheckOutPage";
 import SearchProvider from "./providers/SearchProvider";
 import EmailVerificationPage from "./home-Page/EmailVerificationPage";
@@ -50,7 +50,7 @@ function App() {
   return (
     <GoogleOAuthProvider clientId="1018277959135-oejj32maeibck9r97iu61s6vahj1tgjj.apps.googleusercontent.com">
       <AuthProvider>
-        <Drawerprovider>
+        <DrawerProvider>
           <CartProvider>
             <SearchProvider>
               <ConfigProvider
@@ -120,7 +120,7 @@ function App() {
               </ConfigProvider>
             </SearchProvider>
           </CartProvider>
-        </Drawerprovider>
+        </DrawerProvider>
       </AuthProvider>
     </GoogleOAuthProvider>
   );
