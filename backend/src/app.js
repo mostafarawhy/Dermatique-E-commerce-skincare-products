@@ -35,6 +35,11 @@ const allowedOrigins = [
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
+const isAllowedVercelPreview = (origin) => {
+  if (!origin) return false;
+  return /^https:\/\/dermatique.*\.vercel\.app$/.test(origin);
+};
+
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
@@ -43,12 +48,15 @@ app.use(cookieParser());
 app.use(
   cors({
     origin(origin, callback) {
-      // allow non-browser requests like Postman / server-to-server
+      // Allow non-browser requests like Postman/server-to-server
       if (!origin) {
         return callback(null, true);
       }
 
-      if (allowedOrigins.includes(origin)) {
+      const isAllowed =
+        allowedOrigins.includes(origin) || isAllowedVercelPreview(origin);
+
+      if (isAllowed) {
         return callback(null, true);
       }
 
@@ -76,6 +84,13 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
+
+  if (err.message?.startsWith("CORS blocked for origin:")) {
+    return res.status(403).json({
+      message: err.message,
+    });
+  }
+
   const statusCode = err.statusCode || 500;
 
   res.status(statusCode).json({
