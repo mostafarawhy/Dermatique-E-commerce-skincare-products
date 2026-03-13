@@ -21,7 +21,6 @@ import { useSearchContext } from "../hooks/useSearchContext";
 const { Text } = Typography;
 
 const ShopMainPage = () => {
-
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -43,7 +42,6 @@ const ShopMainPage = () => {
     ),
   }));
 
-
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -61,7 +59,6 @@ const ShopMainPage = () => {
 
     fetchProducts();
   }, []);
-
 
   const handleSelect = (value) => {
     setSearchQuery(value);
@@ -86,7 +83,7 @@ const ShopMainPage = () => {
       setCurrentPage(page);
       scrollToTop();
     },
-    [scrollToTop]
+    [scrollToTop],
   );
 
   const currentPageData = useMemo(() => {
@@ -97,9 +94,8 @@ const ShopMainPage = () => {
 
   const totalItems = useMemo(
     () => (state.results.length > 0 ? state.results.length : products.length),
-    [products, state.results]
+    [products, state.results],
   );
-
 
   if (loading) {
     return (
@@ -116,7 +112,6 @@ const ShopMainPage = () => {
       </ConfigProvider>
     );
   }
-
 
   if (error) {
     return (
