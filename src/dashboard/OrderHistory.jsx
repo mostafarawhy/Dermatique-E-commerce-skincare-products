@@ -28,7 +28,7 @@ const OrderHistory = ({ open }) => {
       setOrders(response.data.orders || []);
       setTotalOrders(response.data.totalOrders || 0);
     } catch (error) {
-      console.log(error);
+      notification.error({ message: "Search failed" });
     } finally {
       setLoading(false);
     }

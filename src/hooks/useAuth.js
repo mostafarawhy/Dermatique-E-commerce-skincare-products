@@ -1,4 +1,3 @@
-
 import { message } from "antd";
 import authReducer from "../reducers/authReducer.js";
 import { useCallback, useEffect, useReducer, useState } from "react";
@@ -32,7 +31,7 @@ export function useAuth() {
   const getCurrentUser = useCallback(async () => {
     try {
       const response = await api.get("/users/current");
-      console.log("Current user data fetched:", response.data);
+
       dispatch({
         type: "SET_CURRENT_USER",
         payload: response.data,
@@ -141,7 +140,7 @@ export function useAuth() {
     } catch (error) {
       console.error("Error deleting account:", error);
       message.error(
-        error.response?.data?.message || "Failed to delete account"
+        error.response?.data?.message || "Failed to delete account",
       );
       throw error;
     }

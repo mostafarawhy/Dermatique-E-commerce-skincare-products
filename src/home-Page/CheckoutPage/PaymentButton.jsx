@@ -19,7 +19,6 @@ const PaymentButton = ({ amount, onSuccess }) => {
     try {
       setPaymentStatus("processing");
       setError(null);
-      console.log("Creating order for amount:", amount);
 
       const response = await api.post("/paypal/create-order", { amount });
 
@@ -40,7 +39,6 @@ const PaymentButton = ({ amount, onSuccess }) => {
   };
 
   const onApprove = async (data) => {
-    console.log("Payment approved, processing...", data);
     setPaymentStatus("processing");
     setError(null);
 
@@ -55,7 +53,6 @@ const PaymentButton = ({ amount, onSuccess }) => {
 
       setPaymentStatus("success");
 
-
       if (onSuccess && typeof onSuccess === "function") {
         await onSuccess(response.data);
       }
@@ -67,7 +64,6 @@ const PaymentButton = ({ amount, onSuccess }) => {
       const errorMessage = error.response?.data?.message || "Payment failed";
       setError(errorMessage);
       message.error(errorMessage);
-
 
       return false;
     }

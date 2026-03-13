@@ -5,6 +5,17 @@ import User from "../models/User.js";
 
 dotenv.config();
 
+const getCookieOptions = () => {
+  const isProduction = process.env.NODE_ENV === "production";
+
+  return {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  };
+};
+
 export const signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -69,12 +80,7 @@ export const login = async (req, res) => {
       { expiresIn: "1w" },
     );
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 604800000,
-    });
+    res.cookie("token", token, getCookieOptions());
 
     const userData = {
       id: user._id,
@@ -104,7 +110,7 @@ export const googleLogin = async (req, res) => {
     const { sub, email, name, picture } = req.body;
 
     let user = await User.findOne({
-      $or: [{ googleId: sub }, { email: email }],
+      $or: [{ googleId: sub }, { email }],
     });
 
     if (!user) {
@@ -127,10 +133,7 @@ export const googleLogin = async (req, res) => {
       expiresIn: "1w",
     });
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 604800000,
-    });
+    res.cookie("token", token, getCookieOptions());
 
     res.json({
       message: "Logged in successfully",
@@ -158,6 +161,13 @@ export const checkAuth = (req, res) => {
 };
 
 export const logout = (req, res) => {
-  res.clearCookie("token");
+  const isProduction = process.env.NODE_ENV === "production";
+
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+  });
+
   res.json({ message: "Logged out successfully" });
 };

@@ -10,7 +10,6 @@ const { Text } = Typography;
 const { Search } = Input;
 
 const SearchDrawer = ({ open, onClose }) => {
- 
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
@@ -23,10 +22,8 @@ const SearchDrawer = ({ open, onClose }) => {
         },
       });
       setResults(response.data.products);
-
-      console.log(response);
     } catch (error) {
-      console.log(error);
+      notification.error({ message: "Search failed" });
     }
   };
 
@@ -55,7 +52,6 @@ const SearchDrawer = ({ open, onClose }) => {
         open={open}
         height={"60%"}
         zIndex={19}
-      
       >
         <Flex vertical className="search-drawer-content">
           <Flex>

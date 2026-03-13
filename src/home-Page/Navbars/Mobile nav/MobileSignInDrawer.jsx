@@ -26,8 +26,6 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 const { Title, Text } = Typography;
 const { Item } = Form;
 
-
-
 const MobileSignInDrawer = ({ open, onClose }) => {
   const navigate = useNavigate();
 
@@ -42,17 +40,12 @@ const MobileSignInDrawer = ({ open, onClose }) => {
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        console.log("Google login success:", tokenResponse);
-
-
         const userInfo = await axios.get(
           "https://www.googleapis.com/oauth2/v3/userinfo",
           {
             headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-          }
+          },
         );
-
-        console.log("Google user info:", userInfo.data);
 
         await authGoogleLogin(userInfo.data);
         await getCurrentUser();

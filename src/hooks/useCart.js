@@ -37,9 +37,6 @@ export function useCart() {
       dispatch({ type: "SET_CART", payload: response.data });
     } catch (error) {
       console.error("Error fetching cart:", error);
-      console.log("failed to fetch cart");
-
-
     } finally {
       dispatch({ type: "SET_LOADING", payload: false });
     }
@@ -53,7 +50,7 @@ export function useCart() {
         { guestCart },
         {
           withCredentials: true,
-        }
+        },
       );
       dispatch({ type: "SET_CART", payload: response.data });
     } catch (error) {
@@ -73,7 +70,7 @@ export function useCart() {
           const response = await api.post(
             "/cart/add",
             { productId: product._id, quantity: 1 },
-            { withCredentials: true }
+            { withCredentials: true },
           );
           dispatch({ type: "SET_CART", payload: response.data });
         } else {
@@ -82,12 +79,11 @@ export function useCart() {
         message.success("Item added to cart successfully");
       } catch (error) {
         console.error("Error adding to cart:", error);
-
       } finally {
         dispatch({ type: "SET_LOADING", payload: false });
       }
     },
-    [authState.isAuthenticated]
+    [authState.isAuthenticated],
   );
 
   const updateItemQuantity = useCallback(
@@ -98,7 +94,7 @@ export function useCart() {
           const response = await api.put(
             "/cart/update",
             { productId: itemId, change },
-            { withCredentials: true }
+            { withCredentials: true },
           );
           dispatch({ type: "SET_CART", payload: response.data });
         } else {
@@ -110,12 +106,11 @@ export function useCart() {
         message.success("Cart updated successfully");
       } catch (error) {
         console.error("Error updating cart:", error);
-
       } finally {
         dispatch({ type: "SET_LOADING", payload: false });
       }
     },
-    [authState.isAuthenticated]
+    [authState.isAuthenticated],
   );
 
   const removeFromCart = useCallback(
@@ -133,12 +128,11 @@ export function useCart() {
         message.success("Item removed from cart successfully");
       } catch (error) {
         console.error("Error removing from cart:", error);
-
       } finally {
         dispatch({ type: "SET_LOADING", payload: false });
       }
     },
-    [authState.isAuthenticated]
+    [authState.isAuthenticated],
   );
 
   const emptyCart = useCallback(async () => {

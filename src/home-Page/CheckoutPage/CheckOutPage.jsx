@@ -18,7 +18,6 @@ const CheckOutPage = () => {
 
   const handlePaymentSuccess = async (order) => {
     try {
-      console.log("Payment successful, emptying cart...");
       await emptyCart();
       message.success("Order completed successfully!");
       navigate("/dashboard");

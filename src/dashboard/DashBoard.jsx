@@ -48,7 +48,7 @@ const DashBoard = () => {
 
   const isMobile = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
+      navigator.userAgent,
     );
   };
 
@@ -60,9 +60,7 @@ const DashBoard = () => {
       message.info(`Call ${phoneNumber} for customer service`);
     }
   };
-  useEffect(() => {
-    console.log("statefromdashboard", user);
-  }, [state, user]);
+  useEffect(() => {}, [state, user]);
   return (
     <Flex className="dashboard-wrapper">
       <Flex className="user-welcome-wrapper">

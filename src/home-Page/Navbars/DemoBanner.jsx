@@ -6,7 +6,7 @@ export default function DemoBanner() {
         color: "#92400e",
         textAlign: "center",
         padding: "2px",
-        fontSize: "15px",
+        fontSize: "12px",
       }}
     >
       ⚠️ Demo Store — Dermatique is a portfolio project. No real purchases will

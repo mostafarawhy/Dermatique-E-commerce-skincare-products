@@ -29,9 +29,6 @@ function useDrawers() {
     if (MENU_ITEMS[item]) {
       setActiveMenu(item);
       setDrawer("secondary", true);
-    } else {
-
-      console.log(`Clicked on ${item}`);
     }
   };
 
