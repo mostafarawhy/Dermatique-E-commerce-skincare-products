@@ -11,37 +11,38 @@
 ## Screenshots
 
 ### Homepage
-![Homepage](./Screenshots/Screenshot%202025-06-02%20at%204.38.03 PM.png)
+![Homepage](./Screenshots/Screenshot%202025-06-02%20at%204.38.03 PM.png)
 
 ### Shop Page
-![Shop page](./Screenshots/Screenshot%202025-06-02%20at%204.40.43 PM.png)
+![Shop page](./Screenshots/Screenshot%202025-06-02%20at%204.38.21 PM.png)
 
 ### Real-time Search Suggestions
-![Search suggestions](./Screenshots/Screenshot%202025-06-02%20at%204.40.54 PM.png)
+![Search suggestions](./Screenshots//Screenshot%202025-06-02%20at%204.40.54 PM.png)
 
 ### Cart Drawer
-![Cart Drawer](./Screenshots/Screenshot%202025-06-02%20at%204.45.00 PM.png)
+![Cart Drawer](./Screenshots/Screenshot%202026-03-18%20at%209.57.57 PM.png)
 
 ### Checkout with PayPal
-![Checkout](./Screenshots/Screenshot%202025-06-02%20at%204.45.25 PM.png)
+![Checkout](./Screenshots/Screenshot%202025-06-02%20at%204.45.25 PM.png)
 
 ### PayPal Payment Modal
-![PayPal](./Screenshots/Screenshot%202025-06-02%20at%204.46.23 PM.png)
+![PayPal](./Screenshots/Screenshot%202025-06-02%20at%204.46.23 PM.png)
 
 ### Order History
-![Order history](./Screenshots/Screenshot%202025-06-02%20at%204.47.39 PM.png)
+![Order history](./Screenshots/Screenshot%202025-06-02%20at%204.47.39 PM.png)
 
 ### Account & Delivery Settings
-![Account settings](./Screenshots/Screenshot%202025-06-02%20at%204.42.55 PM.png)
+![Account settings](./Screenshots/Screenshot%202025-06-02%20at%204.44.31 PM.png)
 
 ### Sign In with Google
-![Google OAuth](./Screenshots/Screenshot%202025-06-02%20at%204.42.17 PM.png)
+![Google OAuth](./Screenshots/Screenshot%202025-06-02%20at%204.42.17 PM.png)
 
 ### Mobile Responsive
-![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.21.59 PM.png)
-![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.22.49 PM.png)
-![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.23.19 PM.png)
-![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.23.36 PM.png)
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.21.59 PM.png)
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.23.19 PM.png)
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.23.36 PM.png)
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.22.49 PM.png)
+
 
 ---
 
