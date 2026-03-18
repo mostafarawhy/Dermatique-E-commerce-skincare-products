@@ -182,7 +182,7 @@ Cart state for unauthenticated users is stored in localStorage and managed by th
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/mostafarawhy/dermatique.git
+git clone https://github.com/mostafarawhy/Dermatique-E-commerce-skincare-products.git
 cd dermatique
 ```
 
