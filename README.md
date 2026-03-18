@@ -1,222 +1,188 @@
-# DERMATIQUE 🧴✨
+# DERMATIQUE
 
-## 📸 Screenshots
+**A full-stack e-commerce platform for premium skincare — with real payment processing, JWT authentication, Google OAuth, and persistent cart management across sessions.**
+
+> React · Node.js · Express · MongoDB · PayPal · Vercel + Render
+
+**Live Demo:** [dermatique-e-commerce-skincare-prod.vercel.app](https://dermatique-e-commerce-skincare-prod.vercel.app)
+
+---
+
+## Screenshots
 
 ### Homepage
-![Homepage](./Screenshots/Screenshot%202025-06-02%20at%204.38.03 PM.png)
+![Homepage](./Screenshots/Screenshot%202025-06-02%20at%204.38.03 PM.png)
 
-### Fastshop homepage
-![fastshop homepage](./Screenshots/Screenshot%202025-06-02%20at%204.38.21 PM.png)
+### Shop Page
+![Shop page](./Screenshots/Screenshot%202025-06-02%20at%204.40.43 PM.png)
 
-### Signup page
-![Signup page](./Screenshots/Screenshot%202025-06-02%20at%204.39.45 PM.png)
+### Real-time Search Suggestions
+![Search suggestions](./Screenshots/Screenshot%202025-06-02%20at%204.40.54 PM.png)
 
-### SignIn Page
-![SignIn Page](./Screenshots/Screenshot%202025-06-02%20at%204.40.01 PM.png)
+### Cart Drawer
+![Cart Drawer](./Screenshots/Screenshot%202025-06-02%20at%204.45.00 PM.png)
 
-### Opened Empty
-![Opened Empty](./Screenshots/Screenshot%202025-06-02%20at%204.40.20 PM.png)
+### Checkout with PayPal
+![Checkout](./Screenshots/Screenshot%202025-06-02%20at%204.45.25 PM.png)
 
-### Shop page
-![Shop page](./Screenshots/Screenshot%202025-06-02%20at%204.40.43 PM.png)
+### PayPal Payment Modal
+![PayPal](./Screenshots/Screenshot%202025-06-02%20at%204.46.23 PM.png)
 
-### Search suggestions inshop page
-![Search suggestions inshop page](./Screenshots/Screenshot%202025-06-02%20at%204.40.54 PM.png)
+### Order History
+![Order history](./Screenshots/Screenshot%202025-06-02%20at%204.47.39 PM.png)
 
-### Sign in with Google
-![Sign in with Google](./Screenshots/Screenshot%202025-06-02%20at%204.42.17 PM.png)
+### Account & Delivery Settings
+![Account settings](./Screenshots/Screenshot%202025-06-02%20at%204.42.55 PM.png)
 
-### Account settings with fill address options 
-![Account settings with fill options ](./Screenshots/Screenshot%202025-06-02%20at%204.42.55 PM.png)
+### Sign In with Google
+![Google OAuth](./Screenshots/Screenshot%202025-06-02%20at%204.42.17 PM.png)
 
-### Cart Drawer with Items (control buttons number, delete items order summary)
-![Drawer with cart](./Screenshots/Screenshot%202025-06-02%20at%204.45.00 PM.png)
+### Mobile Responsive
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.21.59 PM.png)
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.22.49 PM.png)
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.23.19 PM.png)
+![Mobile](./Screenshots/Screenshot%202025-06-02%20at%205.23.36 PM.png)
 
-### CheckoutPage with order summary and Paypal payment
-![CheckoutPage with order summary and Paypal payment](./Screenshots/Screenshot%202025-06-02%20at%204.45.25 PM.png)
+---
 
-### Paypal payment
-![Paypal payment](./Screenshots/Screenshot%202025-06-02%20at%204.46.23 PM.png)
+## Why I Built This
 
-### Order history
-![Order history](./Screenshots/Screenshot%202025-06-02%20at%204.47.39 PM.png)
+I wanted to build a complete production e-commerce experience — not a tutorial clone, but something that handles the real complexity: actual PayPal transactions, JWTs in HttpOnly cookies, Google OAuth with upsert logic, guest-to-authenticated cart merging, and order confirmation emails. The goal was to understand how all of these systems connect end-to-end, and to be forced to debug the problems that only show up in a real production environment — CORS misconfigurations, cookie sameSite issues, PayPal compliance violations, race conditions in cart state. Every piece of this was built, broken, and fixed from scratch.
 
-### Responsive for different screens
-![Homepage](./Screenshots/Screenshot%202025-06-02%20at%205.21.59 PM.png)
-![Homepage](./Screenshots/Screenshot%202025-06-02%20at%205.22.49 PM.png)
-![Homepage](./Screenshots/Screenshot%202025-06-02%20at%205.23.19 PM.png)
-![Homepage](./Screenshots/Screenshot%202025-06-02%20at%205.23.36 PM.png)
+---
 
-**A Premium Skincare & Cosmetics E-commerce Platform**
+## Features
 
+### Product Catalog
+Paginated product grid (12 per page) with category-based browsing. Products are stored in MongoDB with text indexes on name, description, category, and a keywords array for improved search recall.
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Installation & Setup](#installation--setup)
-- [Environment Variables](#environment-variables)
-- [API Endpoints](#api-endpoints)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
+### Debounced Real-Time Search with Suggestions
+As users type in the search bar, a 300ms debounced request fires to `/api/search/suggestions`, returning the top 5 name/category matches rendered in an Ant Design AutoComplete dropdown. Full search supports filtering by category, price range (min/max), and sort order (price ascending/descending, newest, oldest). An AbortController cancels in-flight requests when a new keystroke fires before the previous response completes.
 
-## 🌟 Overview
+### Cart Drawer with Live Updates
+A slide-out drawer shows the current cart with per-item quantity controls, individual removal, running subtotal, shipping cost, and order total — all updating live without a page reload. For unauthenticated users, cart state is stored in localStorage. On login, the guest cart is automatically merged with the server-side cart (additive — quantities combine rather than overwrite).
 
-DERMATIQUE is a full-stack e-commerce platform specializing in premium skincare and cosmetics products. The platform offers a seamless shopping experience with modern UI/UX design, secure payment processing, and comprehensive user management features.
+### PayPal Checkout
+A full PayPal sandbox integration using the PayPal Orders API directly via Axios on the backend. The backend generates an access token via OAuth2 client credentials, creates the order, and captures payment. A COMPLIANCE_VIOLATION error path is handled explicitly — when PayPal returns this error on capture, the backend fetches the order details separately to recover the transaction data before persisting the order record.
 
-## ✨ Features
+### Google OAuth
+Users can sign in with Google using `@react-oauth/google`. The frontend exchanges the Google token for user info from the Google API, then posts the profile data to the backend. The backend uses Mongoose upsert logic: creates a new user if the email doesn't exist, or links the Google account to an existing email if one already exists without a `googleId`.
 
-### 🛒 **E-commerce Core**
-- Product catalog with detailed descriptions and images
-- Advanced search functionality with real-time suggestions
-- Shopping cart management with add/remove/update quantities
-- Secure checkout process with order summary
-- Order history and tracking
+### JWT Authentication
+Tokens are signed with a 1-week expiry and stored in HttpOnly cookies — not localStorage. In production, cookies are `Secure` and `SameSite: none` (required for cross-origin requests between Vercel and Render). In development, `SameSite: lax` is used. A middleware validates the JWT on every protected route and attaches the `userId` to `req.user`.
 
-### 👤 **User Management**
-- User registration and authentication
-- Google OAuth integration for seamless login
-- Email verification system
-- User profile management with delivery address
-- Account deletion option
-- Secure session management with JWT
+### Email Verification & Transactional Email
+The User model includes `isVerified`, `verificationToken`, and `verificationTokenExpiry` fields. Transactional emails (order confirmations with itemized HTML tables, payer info, and shipping details) are sent via the Resend API after a successful PayPal capture.
 
-### 💳 **Payment Integration**
-- PayPal payment gateway integration
-- Secure payment processing
-- Order confirmation and receipts
-- Payment method preferences
+### Order History
+The dashboard shows all past orders in reverse-chronological order, with full line-item detail, totals, PayPal order IDs, and status. Orders are stored as an array of sub-documents under the user's Order record, with duplicate prevention via paypalOrderId checking before insert.
 
-### 🎨 **UI/UX Features**
-- Responsive design for all devices
-- Modern drawer-based navigation
-- Real-time search with suggestions dropdown
-- Shopping bag drawer with live updates
-- Clean, minimalist design aesthetic
-- Ant Design component library integration
+### Account Management
+Users can update their delivery address (country, city, apartment, phone number via `country-state-city` and `react-phone-input-2`), view order history, and permanently delete their account. Account deletion requires password confirmation for email/password users; Google-authenticated users skip that step.
 
-### 🔧 **Technical Features**
-- RESTful API architecture
-- MongoDB database with Mongoose ODM
-- JWT-based authentication
-- Password encryption with bcrypt
-- CORS enabled for cross-origin requests
-- Request logging with Morgan
-- Security headers with Helmet
-- Graceful server shutdown handling
+---
 
-## 🛠 Tech Stack
+## Tech Stack
 
-### **Frontend**
-- **React 18.3.1** - Modern UI library
-- **Vite** - Fast build tool and dev server
-- **React Router DOM** - Client-side routing
-- **Ant Design (antd)** - Enterprise-class UI components
-- **Material-UI (@mui/material)** - React component library
-- **Styled Components** - CSS-in-JS styling
-- **Tailwind CSS** - Utility-first CSS framework
-- **Axios** - HTTP client for API requests
+### Frontend
 
-### **Backend**
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web application framework
-- **MongoDB** - NoSQL database
-- **Mongoose** - MongoDB object modeling
-- **JWT (jsonwebtoken)** - Authentication tokens
-- **bcrypt** - Password hashing
-- **Helmet** - Security middleware
-- **CORS** - Cross-origin resource sharing
-- **Morgan** - HTTP request logger
+| Technology | Why |
+|---|---|
+| **React 18** | Component model and hooks-based architecture fit the complexity of managing auth, cart, search, and drawer state simultaneously |
+| **Vite** | Significantly faster dev server startup and HMR compared to CRA. Native ESM in development, Rollup for production builds |
+| **React Router DOM v6** | Declarative client-side routing with nested route support |
+| **Axios** | Interceptor support for consistent error handling and the ability to attach an AbortController to cancel in-flight search requests |
+| **Ant Design** | Used for AutoComplete (search suggestions), Form, Input, Spin, and notification message components |
+| **Material-UI** | Used for Drawer components (cart, mobile navigation) and a few layout primitives |
+| **Tailwind CSS** | Utility classes for rapid layout and spacing without writing custom CSS |
+| **Styled Components** | Dynamic component-level styles that needed to respond to props (e.g., active drawer state, theme tokens) |
+| **@paypal/react-paypal-js** | Renders the PayPal payment button and manages the PayPal JS SDK lifecycle |
+| **@react-oauth/google** | Handles the Google OAuth flow and exposes `useGoogleLogin` hook |
+| **country-state-city** | Provides structured geographic data for the delivery address form dropdowns |
 
-### **Payment & Authentication**
-- **PayPal React SDK** - Payment processing
-- **Google OAuth** - Social authentication
-- **Resend** - Email service integration
-- **Crypto-JS** - Cryptographic functions
+> **Note on UI libraries:** Ant Design, MUI, Tailwind, and Styled Components are all present in this codebase. This reflects an active learning phase where each library was explored for different UI needs. In a production codebase I was maintaining long-term, I would consolidate to a single design system from the start to reduce bundle size, eliminate specificity conflicts, and simplify onboarding.
 
-### **Development Tools**
-- **ESLint** - Code linting
-- **Nodemon** - Development server auto-restart
-- **Autoprefixer** - CSS vendor prefixing
-- **PostCSS** - CSS processing
+### Backend
 
-## 📁 Project Structure
+| Technology | Why |
+|---|---|
+| **Node.js + Express** | Lightweight and well-suited for a JSON API. Middleware composition made it straightforward to apply auth, error handling, and CORS globally |
+| **MongoDB + Mongoose** | Document model maps naturally to nested cart items and order sub-documents. Text indexes on the Product model power the search endpoint without a separate search service |
+| **JWT (jsonwebtoken)** | Stateless authentication — no server-side session store required. HttpOnly cookie storage prevents XSS-based token theft |
+| **bcrypt** | Industry-standard password hashing with configurable salt rounds (10) |
+| **Helmet** | Sets security-relevant HTTP headers (X-Frame-Options, CSP, HSTS, etc.) with minimal configuration |
+| **Morgan** | Structured HTTP request logging in development |
+| **Resend** | Simple API for transactional email — used for order confirmation emails with full HTML templates |
+| **Cookie-parser** | Parses the JWT from incoming request cookies for the auth middleware |
 
-```
-DERMATIQUE/
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── database.js
-│   │   ├── controllers/
-│   │   │   ├── authenticationController.js
-│   │   │   ├── cartController.js
-│   │   │   ├── orderController.js
-│   │   │   ├── paymentController.js
-│   │   │   ├── productController.js
-│   │   │   ├── searchController.js
-│   │   │   ├── updateProductKeywords.js
-│   │   │   └── userController.js
-│   │   ├── middlewares/
-│   │   │   ├── authMiddleware.js
-│   │   │   └── errorMiddleware.js
-│   │   ├── models/
-│   │   │   ├── Cart.js
-│   │   │   ├── Order.js
-│   │   │   ├── Product.js
-│   │   │   └── User.js
-│   │   ├── routes/
-│   │   │   ├── authenticationRoutes.js
-│   │   │   ├── cartRoutes.js
-│   │   │   ├── orderRoutes.js
-│   │   │   ├── paymentRoutes.js
-│   │   │   ├── productsRoutes.js
-│   │   │   ├── searchRoutes.js
-│   │   │   └── userRoutes.js
-│   │   ├── utils/
-│   │   │   └── validators.js
-│   │   └── app.js
-│   ├── .env
-│   ├── importProducts.js
-│   ├── package.json
-│   └── products.json
-│
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── api/
-│   │   │   └── index.js
-│   │   ├── assets/
-│   │   ├── css/
-│   │   ├── dashboard/
-│   │   ├── home-Page/
-│   │   ├── CheckoutPage/
-│   │   ├── Navbars/
-│   │   ├── hooks/
-│   │   ├── providers/
-│   │   ├── reducers/
-│   │   ├── saloon components/
-│   │   ├── shop components/
-│   │   ├── stories component/
-│   │   └── utils/
-│   ├── .env
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.js
-```
+---
 
-## 🚀 Installation & Setup
+## Architecture
+
+### Separation of Concerns
+
+The frontend is a React SPA deployed on Vercel. The backend is a standalone Express API deployed on Render. They communicate exclusively over HTTP — the frontend never touches the database, and the backend never renders UI. This separation means each can be scaled, deployed, and debugged independently.
+
+### Backend: Controller / Model / Routes
+
+Each domain (auth, users, cart, orders, products, search, payment) has its own route file, controller file, and Mongoose model. Routes define the endpoint and apply middleware (auth guard, validation). Controllers contain business logic and call the model. Models define the schema and any instance methods (e.g., `comparePassword` on the User model). This keeps each layer testable in isolation.
+
+### Frontend: Reducer-Based State with Context + Custom Hooks
+
+Global state is managed with React's `useReducer` + `createContext`, a pattern popularized by Kent C. Dodds. There are four domain-level providers: `AuthProvider`, `CartProvider`, `SearchProvider`, and `DrawerProvider`. Each provider owns a reducer with explicit action types (e.g., `LOGIN_SUCCESS`, `ADD_TO_CART`, `SET_SUGGESTIONS`), a dispatch function, and a context value.
+
+Consumers never import context directly — they use custom hooks (`useAuthContext`, `useCartContext`, `useSearchContext`, `useDrawerContext`) that throw descriptive errors if used outside their provider. Business logic (API calls, side effects) lives in a second layer of hooks (`useAuth`, `useCart`, `useSearch`, `useDrawers`) that wrap the context hooks. Components are kept as thin as possible.
+
+### RESTful API Design
+
+All endpoints follow REST conventions: nouns for resources, HTTP verbs for actions, appropriate status codes (200, 201, 400, 401, 403, 404, 500). Protected routes run the `authenticateToken` middleware before the controller. The auth middleware validates the JWT from the cookie, handles `TokenExpiredError` and `JsonWebTokenError` separately, and attaches `req.user.userId` for downstream use.
+
+---
+
+## Key Engineering Decisions
+
+### JWT in HttpOnly Cookies
+Storing the token in an HttpOnly cookie (rather than localStorage) means JavaScript on the page cannot access the token — which eliminates a whole class of XSS-based token theft. The tradeoff is more careful CORS and SameSite configuration, especially when the frontend and backend are on different domains in production.
+
+### PayPal Server-Side Integration
+Rather than using only the frontend PayPal SDK, order creation and payment capture both happen on the backend via direct calls to the PayPal Orders API. This ensures the amount can't be tampered with on the client, and gives full control over error handling — including the COMPLIANCE_VIOLATION edge case where PayPal rejects the capture but the transaction has still been recorded on their side.
+
+### Google OAuth Upsert Pattern
+The backend handles four cases on Google login: new user (create), existing Google user (return), existing email user without googleId (link and return), and conflict errors. This prevents duplicate accounts when a user has previously signed up with email and later tries Google.
+
+### Debounced Search with Request Cancellation
+The search hook debounces at 300ms using `setTimeout`/`clearTimeout` and attaches an `AbortController` to each request. When the user types a new character before the previous request resolves, the controller aborts the stale request. This prevents stale responses from overwriting newer results and avoids hammering the API on every keystroke.
+
+### Guest-to-Authenticated Cart Merge
+Cart state for unauthenticated users is stored in localStorage and managed by the same cart reducer. On login, the frontend calls `/api/cart/merge` with the local cart contents. The backend iterates the incoming items and adds them to the user's server cart (additive — if an item already exists in the server cart, quantities combine). After the merge succeeds, the local cart is cleared from localStorage.
+
+---
+
+## What I'd Do Differently
+
+**TypeScript.** The absence of types made refactoring more error-prone than it needed to be — especially across the reducer action types and API response shapes. TypeScript would have caught several bugs at compile time that only surfaced at runtime.
+
+**Single UI library.** Having Ant Design, MUI, Tailwind, and Styled Components in the same project was fine for exploration, but it created bundle size overhead and occasional specificity conflicts. Starting with one system (probably Tailwind + a headless component library like Radix UI or shadcn/ui) would be cleaner.
+
+**More granular commit history.** Many features were built and committed in large chunks. A more disciplined commit cadence — one logical change per commit — would make the git history genuinely useful for understanding why decisions were made.
+
+**Unit and integration tests.** There are no automated tests. Given the complexity of the cart merge logic, PayPal capture flow, and auth middleware, these are exactly the places where tests would have prevented regressions and made refactoring less risky. I'd add Vitest for unit tests and Supertest for API integration tests.
+
+---
+
+## Installation & Setup
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (local or Atlas)
-- Git
+
+- Node.js v18 or higher
+- A MongoDB Atlas cluster (or local MongoDB instance)
+- A PayPal developer account (sandbox credentials)
+- A Google Cloud project with OAuth 2.0 credentials
+- A Resend account for transactional email
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/dermatique.git
+git clone https://github.com/mostafarawhy/dermatique.git
 cd dermatique
 ```
 
@@ -226,200 +192,169 @@ cd backend
 npm install
 ```
 
-Create a `.env` file in the backend directory:
+Create a `.env` file in the `backend/` directory:
 ```env
+NODE_ENV=development
 PORT=4000
 CLIENT_URL=http://localhost:5173
 MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-RESEND_API_KEY=your_resend_api_key
-PAYPAL_CLIENT_ID=your_paypal_client_id
+JWT_SECRET=your_jwt_secret_key_min_32_chars
+DERMATIQUE_APP_PAYPAL_CLIENT_ID=your_paypal_client_id
 PAYPAL_CLIENT_SECRET=your_paypal_client_secret
+RESEND_API_KEY=your_resend_api_key
 ```
+
+Start the backend server:
+```bash
+npm run dev
+```
+
+The API will be available at `http://localhost:4000`.
 
 ### 3. Frontend Setup
 ```bash
-cd ../frontend
+cd frontend
 npm install
 ```
 
-Create a `.env` file in the frontend directory:
+Create a `.env` file in the `frontend/` directory:
 ```env
 VITE_API_URL=http://localhost:4000/api
-VITE_PAYPAL_CLIENT_ID=your_paypal_client_id
-VITE_GOOGLE_CLIENT_ID=your_google_oauth_client_id
+VITE_DERMATIQUE_APP_PAYPAL_CLIENT_ID=your_paypal_client_id
 ```
 
-### 4. Database Setup
-Import sample products (if available):
+> The Google OAuth client ID is configured in `src/App.jsx`. Replace the value passed to `GoogleOAuthProvider` with your own client ID from Google Cloud Console.
+
+Start the frontend dev server:
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+### 4. Seed Product Data
 ```bash
 cd backend
 node importProducts.js
 ```
 
-### 5. Run the Application
+---
 
-**Start Backend Server:**
-```bash
-cd backend
-npm run dev
-```
+## Environment Variables
 
-**Start Frontend Development Server:**
-```bash
-cd frontend
-npm run dev
-```
+### Backend (`backend/.env`)
 
-The application will be available at:
-- Frontend: `http://localhost:5173`
-- Backend API: `http://localhost:4000`
-
-## 🔐 Environment Variables
-
-### Backend (.env)
 | Variable | Description | Required |
-|----------|-------------|----------|
-| `PORT` | Server port number | Yes |
-| `CLIENT_URL` | Frontend application URL | Yes |
-| `MONGODB_URI` | MongoDB connection string | Yes |
-| `JWT_SECRET` | JWT signing secret | Yes |
-| `RESEND_API_KEY` | Email service API key | Yes |
-| `PAYPAL_CLIENT_ID` | PayPal application client ID | Yes |
+|---|---|---|
+| `NODE_ENV` | `development` or `production` — controls cookie security settings | Yes |
+| `PORT` | Port for the Express server | Yes |
+| `CLIENT_URL` | Frontend origin — used in CORS allowlist | Yes |
+| `MONGODB_URI` | MongoDB connection string (Atlas or local) | Yes |
+| `JWT_SECRET` | Secret used to sign and verify JWTs — keep this long and random | Yes |
+| `DERMATIQUE_APP_PAYPAL_CLIENT_ID` | PayPal application client ID | Yes |
 | `PAYPAL_CLIENT_SECRET` | PayPal application secret | Yes |
+| `RESEND_API_KEY` | Resend API key for transactional email | Yes |
 
-### Frontend (.env)
+### Frontend (`frontend/.env`)
+
 | Variable | Description | Required |
-|----------|-------------|----------|
-| `VITE_API_URL` | Backend API base URL | Yes |
-| `VITE_PAYPAL_CLIENT_ID` | PayPal client ID for frontend | Yes |
-| `VITE_GOOGLE_CLIENT_ID` | Google OAuth client ID | Yes |
+|---|---|---|
+| `VITE_API_URL` | Base URL for all backend API requests | Yes |
+| `VITE_DERMATIQUE_APP_PAYPAL_CLIENT_ID` | PayPal client ID used by the frontend SDK | Yes |
 
-## 🛣 API Endpoints
+---
+
+## API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `POST /api/auth/google` - Google OAuth login
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/api/auth/signup` | — | Register with email and password |
+| POST | `/api/auth/login` | — | Login with email and password |
+| POST | `/api/auth/google-login` | — | Login or register via Google OAuth |
+| POST | `/api/auth/logout` | — | Clear auth cookie |
+| GET | `/api/auth/check-auth` | Required | Verify token validity and return user info |
 
 ### Users
-- `GET /api/users/profile` - Get user profile
-- `PUT /api/users/profile` - Update user profile
-- `DELETE /api/users/account` - Delete user account
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/api/users/current` | Required | Get the currently authenticated user |
+| POST | `/api/users/update-delivery-info` | Required | Update saved delivery address |
+| DELETE | `/api/users/delete-account` | Required | Permanently delete account (requires password for non-Google users) |
 
 ### Products
-- `GET /api/products` - Get all products
-- `GET /api/products/:id` - Get product by ID
-- `GET /api/search` - Search products with suggestions
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/api/products/get` | — | Get all products |
+| POST | `/api/products/add` | — | Insert a product record |
+
+### Search
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/api/search/products` | — | Search products — query params: `q`, `category`, `minPrice`, `maxPrice`, `sort` |
+| GET | `/api/search/suggestions` | — | Return top 5 name/category suggestions for a query |
 
 ### Cart
-- `GET /api/cart` - Get user cart
-- `POST /api/cart/add` - Add item to cart
-- `PUT /api/cart/update` - Update cart item
-- `DELETE /api/cart/remove` - Remove item from cart
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/api/cart/` | Required | Get the current user's cart |
+| POST | `/api/cart/add` | Required | Add a product to the cart (increments quantity if already present) |
+| PUT | `/api/cart/update` | Required | Update the quantity of a cart item |
+| DELETE | `/api/cart/remove/:productId` | Required | Remove a specific item from the cart |
+| DELETE | `/api/cart/empty` | Required | Clear all items from the cart |
+| POST | `/api/cart/merge` | Required | Merge a guest (localStorage) cart into the authenticated cart |
 
 ### Orders
-- `POST /api/orders` - Create new order
-- `GET /api/orders` - Get user orders
-- `GET /api/orders/:id` - Get order by ID
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/api/orders/` | Required | Get all orders for the authenticated user |
+| GET | `/api/orders/:orderId` | Required | Get a specific order by ID |
 
 ### Payment
-- `POST /api/paypal/create-order` - Create PayPal order
-- `POST /api/paypal/capture-order` - Capture PayPal payment
 
-## 📱 Screenshots
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/api/paypal/create-order` | Required | Create a PayPal order on the backend and return the order ID |
+| POST | `/api/paypal/capture-payment` | Required | Capture an approved PayPal payment, persist the order, send confirmation email |
 
-### Home Page
-- Clean, minimalist design with hero section
-- "Buy Better, Not More" philosophy
-- Featured products showcase
+---
 
-### Authentication
-- Email/password registration and login
-- Google OAuth integration
-- Password security features
-
-### Shopping Experience
-- Product catalog with search functionality
-- Real-time search suggestions
-- Shopping cart with quantity management
-- Secure checkout with PayPal integration
-
-### User Dashboard
-- Profile management
-- Order history
-- Delivery address management
-- Account settings
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 Development Scripts
+## Development Scripts
 
 ### Backend
 ```bash
-npm run dev      # Start development server with nodemon
-npm start        # Start production server
-npm test         # Run tests
+npm run dev    # Start development server with nodemon
+npm start      # Start production server
 ```
 
 ### Frontend
 ```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build
+npm run dev      # Start Vite dev server
+npm run build    # Production build to /dist
+npm run preview  # Serve the production build locally
 npm run lint     # Run ESLint
 ```
 
-## 🔒 Security Features
+---
 
-- JWT-based authentication
-- Password hashing with bcrypt
-- CORS protection
-- Helmet security headers
-- Input validation and sanitization
-- Secure session management
+## Deployment
 
-## 🌐 Browser Support
+The frontend is deployed on **Vercel** — the `vercel.json` at the root configures the build command, framework, and output directory.
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## 📄 License
-
-This project is licensed under the ISC License.
-
-## 👥 Team
-
-- **Frontend Developer** - React, UI/UX Design
-- **Backend Developer** - Node.js, API Development
-- **Full Stack Developer** - Integration & Deployment
+The backend API is deployed on **Render**. Production CORS is configured to allow the `CLIENT_URL` environment variable, `localhost` origins in development, and any Vercel preview deployment matching `https://dermatique*.vercel.app`.
 
 ---
 
-## 🚀 Deployment
+## License
 
-### Production Build
-```bash
-# Frontend
-npm run build
-
-# Backend
-npm start
-```
-
-### Environment Setup
-Ensure all environment variables are properly configured for production deployment.
+ISC
 
 ---
 
-
-**DERMATIQUE** - Crafting the future of skincare e-commerce with premium quality and exceptional user experience. 🧴✨
+Built by [Mostafa Rawhy](https://github.com/mostafarawhy) · [LinkedIn](https://www.linkedin.com/in/mostafa-rawhy-b7ab522b2/)
