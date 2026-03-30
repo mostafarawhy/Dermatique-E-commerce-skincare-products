@@ -12,7 +12,8 @@ export default function DemoBanner() {
       ⚠️ Demo Store — Dermatique is a portfolio project. No real purchases will
       be processed. Account authentication follows all modern security patterns
       and Google Oauth, Paypal payments through test account only. ⚠️ PLEASE
-      DON'T USE ANY SENSTIVE DATA.
+      DON'T USE ANY SENSTIVE DATA. DEMO ACCOUNT on login page availble to try
+      the project.
     </div>
   );
 }
